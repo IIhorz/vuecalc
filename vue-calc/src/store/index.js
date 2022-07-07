@@ -9,18 +9,21 @@ export default new Vuex.Store({
   },
   mutations: {
     setCart: (state, item) => {
-      console.log(item);
-      state.cart.push(item);
+      localStorage.setItem('item', JSON.stringify(item));
+      state.cart.push(JSON.parse(localStorage.getItem("item")));
+      console.log(state.cart)
     },
   },
   actions: {
-    addItemToCart({ commit }, item) {
+    addItemToCart({
+      commit
+    }, item) {
       commit("setCart", item);
     },
   },
   modules: {},
   getters: {
-    CART(state) {
+    cart(state) {
       return state.cart;
     },
   },
