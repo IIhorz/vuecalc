@@ -1,0 +1,41 @@
+.wrapper {
+  background-color: red;
+  padding: 10px;
+  margin: 0 auto;
+  border: 2px black solid;
+    h1 {
+      margin-left: 50px;
+      font-size: 44px;
+    }
+}
+.form {
+  display: flex;
+  width: 100%;
+  @media screen and (max-width: 390px) {
+    flex-direction: column;
+    &__name,
+    &__price,
+    &__quantity {
+      margin-bottom: 10px;
+    }
+  }
+  &__name {
+    width: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+    @media screen and (max-width: 455px) {
+      width: 100px;
+    }
+    @media screen and (max-width: 390px) {
+      margin-left: 0;
+    }
+  }
+  &__price {
+    width: 50px;
+    margin-right: 20px;
+  }
+  &__quantity {
+    width: 50px;
+    margin-right: 20px;
+  }
+}

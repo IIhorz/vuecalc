@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import HomePage from "./components/HomePage.vue";
+import HomePage from "./views/HomePage.vue";
 
 export default {
   components: {
@@ -16,11 +16,9 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif,
+    Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
