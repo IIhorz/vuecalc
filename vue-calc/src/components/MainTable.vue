@@ -10,22 +10,34 @@
       <table-row v-for="row in item_data" :key="row.name" :row_data="row">
       </table-row>
     </div>
-    <div>
-      <button>Delete</button>
+    <div class="footer">
+      <button class="table__delete_button" @click="deleteCheckedItem">
+        Delete
+      </button>
+      <div class="total">Total: $ {{ sumValues }}</div>
     </div>
   </div>
 </template>
 
 <script>
 import TableRow from "./TableRow.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
+  created() {
+    console.log(this.cart);
+  },
   components: {
     TableRow,
   },
   computed: {
     ...mapGetters(["cart"]),
+    sumValues() {
+      return this.cart.reduce(
+        (Sum, product) => product.price * product.quantity + Sum,
+        0
+      );
+    },
   },
   name: "v-table",
   props: {
@@ -36,8 +48,9 @@ export default {
     },
   },
   methods: {
-    checked() {
-      console.log(this.cart);
+    ...mapActions(["deleteItemFromCart"]),
+    deleteCheckedItem() {
+      return this.deleteItemFromCart();
     },
   },
 };

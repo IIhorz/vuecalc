@@ -12,8 +12,20 @@ export default new Vuex.Store({
     setCart: (state, item) => {
       localStorage.setItem("item", JSON.stringify(item));
       state.cart.push(JSON.parse(localStorage.getItem("item")));
-      console.log(state.cart);
     },
+    deleteItem: (state) => {
+      for (let i = 0; i < state.cart.length; i++) {
+        if (state.cart[i].checked === true) {
+          state.cart.splice(i, 1);
+        }
+      }
+    },
+    setCheckboxes: (state) => {
+      state.cart.map(el => {
+        el.checked === true
+        console.log(el.checked);
+      })
+    }
   },
   plugins: [createPersistedState()],
   actions: {
@@ -22,6 +34,16 @@ export default new Vuex.Store({
     }, item) {
       commit("setCart", item);
     },
+    deleteItemFromCart({
+      commit
+    }, item) {
+      commit('deleteItem', item)
+    },
+    checkItems({
+      commit
+    }, item) {
+      commit('setCheckboxes', item)
+    }
   },
   modules: {},
   getters: {

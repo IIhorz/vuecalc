@@ -1,7 +1,7 @@
 <template>
   <div>
     <form class="form" action="submit">
-      <input type="checkbox" v-model="form.checked" />
+      <input type="checkbox" v-model="form.checked" v-on:click="toggle" />
       <input
         v-model="form.name"
         class="form__name"
@@ -12,12 +12,15 @@
         v-model="form.price"
         class="form__price"
         type="number"
+        oninput="validity.valid||(value='');"
         placeholder="Price"
       />
       <input
         v-model="form.quantity"
         class="form__quantity"
         type="number"
+        min="1"
+        oninput="validity.valid||(value='');"
         placeholder="Qty"
       />
       <button @click.prevent="submitItem(form)" type="submit">Add</button>
@@ -32,16 +35,16 @@ export default {
   initForm: {
     name: "",
     price: "",
-    quantity: "",
-    checked: null,
+    quantity: 1,
+    checked: false,
   },
   data() {
     return {
       form: {
         name: "",
         price: "",
-        quantity: "",
-        checked: null,
+        quantity: 1,
+        checked: false,
       },
     };
   },
@@ -61,7 +64,7 @@ export default {
     ...mapGetters(["cart"]),
   },
   methods: {
-    ...mapActions(["addItemToCart"]),
+    ...mapActions(["addItemToCart", "checkItems"]),
     submitItem(form) {
       this.form = { ...this.$options.initForm };
       return this.addItemToCart(form);
@@ -78,6 +81,9 @@ export default {
 
       storedForm = JSON.parse(JSON.stringify(this.form));
       this.setStorage(storedForm);
+    },
+    toggle() {
+      return this.checkItems();
     },
   },
 };
