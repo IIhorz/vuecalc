@@ -1,5 +1,5 @@
 .wrapper {
-  background-color: red;
+  background-color: #dfdfdf;
   padding: 10px;
   margin: 0 auto;
   border: 2px black solid;
@@ -63,4 +63,7 @@
 .row {
   text-align: left;
   flex-basis: 20%;
+}
+.table-row:nth-child(even) {
+  background-color: #f1f1f1;
 }

@@ -1,6 +1,7 @@
 <template>
   <div>
     <form class="form" action="submit">
+      <input type="checkbox" v-model="form.checked" />
       <input
         v-model="form.name"
         class="form__name"
@@ -10,13 +11,13 @@
       <input
         v-model="form.price"
         class="form__price"
-        type="text"
+        type="number"
         placeholder="Price"
       />
       <input
         v-model="form.quantity"
         class="form__quantity"
-        type="text"
+        type="number"
         placeholder="Qty"
       />
       <button @click.prevent="submitItem(form)" type="submit">Add</button>
@@ -32,6 +33,7 @@ export default {
     name: "",
     price: "",
     quantity: "",
+    checked: null,
   },
   data() {
     return {
@@ -39,6 +41,7 @@ export default {
         name: "",
         price: "",
         quantity: "",
+        checked: null,
       },
     };
   },

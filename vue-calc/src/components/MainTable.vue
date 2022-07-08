@@ -1,18 +1,17 @@
 <template>
   <div class="table">
     <div class="table__header">
-      <input type="checkbox" />
       <p class="row">Product name</p>
       <p class="row">Price</p>
       <p class="row">Qty</p>
       <p class="row">Summ</p>
     </div>
-    <div class="table__body" v-if="item_data !== null" >
-      <table-row
-        v-for="row in item_data"
-        :key="row.name"
-        :row_data="row"
-      ></table-row>
+    <div class="table__body" v-if="!item_data.name">
+      <table-row v-for="row in item_data" :key="row.name" :row_data="row">
+      </table-row>
+    </div>
+    <div>
+      <button>Delete</button>
     </div>
   </div>
 </template>
@@ -34,6 +33,11 @@ export default {
       default: () => {
         return [];
       },
+    },
+  },
+  methods: {
+    checked() {
+      console.log(this.cart);
     },
   },
 };
