@@ -6,7 +6,7 @@
       <p class="row">Qty</p>
       <p class="row">Summ</p>
     </div>
-    <div class="table__body" v-if="!item_data.name">
+    <div class="table__body">
       <table-row v-for="row in item_data" :key="row.name" :row_data="row">
       </table-row>
     </div>
