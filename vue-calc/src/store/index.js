@@ -11,8 +11,7 @@ export default new Vuex.Store({
   mutations: {
     setCart: (state, item) => {
       if (item.name && item.price && item.quantity) {
-        localStorage.setItem("item", JSON.stringify(item));
-        state.cart.push(JSON.parse(localStorage.getItem("item")));
+        state.cart.push(item)
       } else {
         alert('please enter valid values')
       }
@@ -25,7 +24,7 @@ export default new Vuex.Store({
       }
     },
     setCheckboxes: (state) => {
-      state.cart.forEach(el => {
+      state.cart.map(el => {
         el.checked = true
       })
     }

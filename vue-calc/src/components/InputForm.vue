@@ -82,7 +82,7 @@ export default {
       storedForm = JSON.parse(JSON.stringify(this.form));
       this.setStorage(storedForm);
     },
-    toggle() {
+    toggle() { 
       return this.checkItems();
     },
   },
